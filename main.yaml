@@ -1,0 +1,34 @@
+---
+- name: Install i3 Desktop Build
+  hosts: desktop
+  gather_facts: yes
+
+  tasks:
+  - name: Include vars
+    include_vars:
+      file: vars.yaml
+      
+
+  - name: Update all packages
+    dnf:
+      state: latest
+      name: '*'
+    become: yes
+
+  - name: Copy non repo packages
+    copy:
+      dest: /tmp/
+      src: "./files/{{ item }}"
+    with_items: "{{ non_repo_packages }}"
+
+  - name: Install non repo packages
+    dnf:
+      state: present
+      name: "/tmp/{{ item }}"
+    become: yes
+    with_items: "{{ non_repo_packages }}"
+
+  - name: Install additional packages
+    dnf:
+      name: compton
+      state: present
