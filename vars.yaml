@@ -1,4 +1,7 @@
 ---
+# TODO more vars all of the vars
 non_repo_packages:
 - i3-gaps-4.15.0.1-2.fc30.x86_64.rpm
 - polybar-3.3.1-1.fc30.x86_64.rpm
+
+systemd_location: /etc/systemd/system/

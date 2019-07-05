@@ -1,0 +1,10 @@
+[Unit]
+Description=Run overGrive
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python2 /opt/thefanclub/overgrive/overgrive
+
+[Install]
+WantedBy=i3-session-tray.target

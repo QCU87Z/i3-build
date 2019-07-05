@@ -1,0 +1,12 @@
+[Unit]
+Description=Load Lightscreen
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/sleep 10
+ExecStartPre=-/usr/bin/pkill -f /opt/Lightscreen/lightscreen
+ExecStart=/opt/Lightscreen/lightscreen -h
+
+[Install]
+WantedBy=i3-session-tray.target

@@ -1,0 +1,4 @@
+[Unit]
+Description=i3 session setup
+BindsTo=graphical-session-pre.target
+Before=i3-session-polybar.target

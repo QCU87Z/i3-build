@@ -1,0 +1,5 @@
+[Unit]
+Description=i3 session running
+BindsTo=graphical-session.target
+After=i3-session-polybar.target
+Before=i3-session-tray.target

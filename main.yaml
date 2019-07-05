@@ -2,7 +2,7 @@
 - name: Install i3 Desktop Build
   hosts: desktop
   gather_facts: yes
-
+# TODO add sudo password to a vault
   tasks:
   - name: Include vars
     include_vars:
@@ -32,3 +32,20 @@
     dnf:
       name: compton
       state: present
+    become: yes
+
+  - name: Copy i3-config
+    copy:
+      dest: ~/.config/i3/
+      src: ./files/i3-config
+    
+  - name: Copy systemd unit files
+    copy:
+      dest: "{{ systemd_location }}"
+      src: ./files/systemd/
+    become: yes
+
+  - name: Reload systemd daemon
+    systemd:
+      daemon_reload: yes
+    become: yes

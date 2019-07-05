@@ -1,0 +1,5 @@
+[Unit]
+Description=Boot polybar
+BindsTo=graphical-session.target
+After=i3-session-pre.target
+Before=i3-session.target

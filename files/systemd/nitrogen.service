@@ -1,0 +1,11 @@
+[Unit]
+Description=Wallpaper management with nitrogen
+PartOf=graphical-session.target
+After=xrandr.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nitrogen --restore
+
+[Install]
+WantedBy=i3-session.target
